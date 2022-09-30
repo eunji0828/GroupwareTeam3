@@ -10,12 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9f39f76-9cdd-4054-b886-97a144ff9ff5" name="변경" comment="">
+
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/groupware_war.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/artifacts/groupware_war_exploded.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_mail_javax_mail_1_5_6.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_2_16_RELEASE.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/groupware.iml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/../.project" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/groupware_team3_war.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/groupware_team3_war_exploded.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
@@ -28,6 +31,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/236a305c-a460-4ff7-b063-79c92ea5a4ef/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/BookingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/calendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/controller/calendarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team3/groupware/seongyu/model/BookingDAO.java" afterDir="false" />
@@ -47,6 +51,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/calendar/a.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/calendar/a.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/booking/booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/booking/booking.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/calendar/a.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/calendar/a.js" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +78,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
+
   <component name="ProjectId" id="2FTb4GhqkbY9s5QKw6il0J5mhiK" />
+
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -84,8 +91,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Groupware_Team3/groupware/src/main/java/com/team3/groupware/seongyu"
+
   }
 }]]></component>
   <component name="RecentsManager">
@@ -109,6 +118,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="ee5758b1-400c-4355-8a4e-27c53d301034" />
+
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -117,6 +127,7 @@
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="49726" />
+
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -195,6 +206,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664518828875</updated>
       <workItem from="1664518830755" duration="1452000" />
+
     </task>
     <servers />
   </component>
