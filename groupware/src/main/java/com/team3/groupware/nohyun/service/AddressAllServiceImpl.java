@@ -18,7 +18,7 @@ public class AddressAllServiceImpl implements AddressAllService{
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return this.addressAllDao.selectList(map); // º¸³»¸é¼­ ¹Ş´Â ¾Öµé (È£Ãâ°ú ¸®ÅÏÀ» °°ÀÌ ÇÏ´Â ´À³¦)
+		return this.addressAllDao.selectList(map); // ï¿½ï¿½ï¿½ï¿½ï¿½é¼­ ï¿½Ş´ï¿½ ï¿½Öµï¿½ (È£ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	}
 
 	@Override
@@ -49,6 +49,12 @@ public class AddressAllServiceImpl implements AddressAllService{
 	public List<Map<String, Object>> addressInfo(Map<String, Object> AllInfo) {
 		// TODO Auto-generated method stub
 		return this.addressAllDao.selectList_info(AllInfo);
+	}
+
+	// ì£¼ì†Œë¡ ì´ ê°œìˆ˜ êµ¬í•˜ê¸°
+	@Override
+	public int countTotal_addressAll() {
+		return this.addressAllDao.countTotal_addressAll();
 	}
 
 }

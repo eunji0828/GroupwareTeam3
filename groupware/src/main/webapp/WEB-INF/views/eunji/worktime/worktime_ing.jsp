@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8" />
@@ -21,50 +22,41 @@
 
         <div id="layoutSidenav_content">
             <div class="content_box">
-                승인진행중
+               	 승인진행중
             </div>
 
             <!-- 진행중문서 리스트 테이블 -->
             <div class="worktime_ing_docu_list">
                 <p>근태 진행 문서</p>
                 <div class="worktime_ing_docu_table_list">
-                <table class="worktime_ing_docu_table">
-                    <tr class="worktime_ing_table_bg">
-                        <td>문서번호</td>
-                        <td>기안일</td>
-                        <td>결재양식</td>
-                        <td style="width:40%">제목</td>
-                        <td>첨부</td>
-                    </tr>
-                    <tr class="worktime_ing_table_hover">
-                        <td>20203086</td>
-                        <td>2021-12-10</td>
-                        <td>연차신청서</td>
-                        <td>휴가갈래요</td>
-                        <td><i class="xi-paper"></i></td>
-                    </tr>
-                    <tr class="worktime_ing_table_hover">
-                        <td>20203086</td>
-                        <td>2021-12-10</td>
-                        <td>연차신청서</td>
-                        <td>휴가갈래요</td>
-                        <td><i class="xi-paper"></i></td>
-                    </tr>
-                </table>
-        </div>
+	                <table class="worktime_ing_docu_table">
+	                    <tr class="worktime_ing_table_bg">
+	                        <td>문서번호</td>
+	                        <td>기안일</td>
+	                        <td>결재양식</td>
+	                        <td style="width:40%">제목</td>
+	                        <td>첨부</td>
+	                    </tr>
+	                    <tr class="worktime_ing_table_hover">
+	                        <td>20203086</td>
+	                        <td>2021-12-10</td>
+	                        <td>연차신청서</td>
+	                        <td>휴가갈래요</td>
+	                        <td><i class="xi-paper"></i></td>
+	                    </tr>
+	                    <tr class="worktime_ing_table_hover">
+	                        <td>20203086</td>
+	                        <td>2021-12-10</td>
+	                        <td>연차신청서</td>
+	                        <td>휴가갈래요</td>
+	                        <td><i class="xi-paper"></i></td>
+	                    </tr>
+	                </table>
+        		</div>
 
            <!-- 페이지 넘버 -->
-           <div class="worktime_ing_list_number">
-            <div>
-                <div class="worktime_ing_list_n_menu">
-                    <span class="worktime_ing_disabled"><  이전</span>
-                    <span class="worktime_ing_current">1</span>
-                    <a href="#?page=2">2</a>
-                    <a href="#?page=3">3</a>
-                    <span class="worktime_ing_disabled">다음  ></span>                                
-                </div>                            
-            </div>
-        </div>
+           
+    	</div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>

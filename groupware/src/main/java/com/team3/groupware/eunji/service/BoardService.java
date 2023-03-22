@@ -3,6 +3,7 @@ package com.team3.groupware.eunji.service;
 import java.util.List;
 import java.util.Map;
 
+import com.team3.groupware.common.model.Criteria;
 import com.team3.groupware.eunji.model.BoardVO;
 
 public interface BoardService {
@@ -11,7 +12,7 @@ public interface BoardService {
 	void board_write_insert(BoardVO boardVo);
 
 	// 게시글 리스트 불러오기
-	List<BoardVO> board_selectList(BoardVO boardVo);
+	List<BoardVO> board_selectList(Criteria cri);
 
 	// 게시글 디테일 보기
 	Map<String,Object> board_detail(Map<String, Object> map);
@@ -30,7 +31,7 @@ public interface BoardService {
 
 
 	// 공지게시글 리스트 불러오기 -정치-
-	List<BoardVO> board_selectNTList(BoardVO boardVo);
+	List<BoardVO> board_selectNTList(Criteria cri);
 
 	// 댓글 입력
 	void board_comment_insert(Map<String, Object> comment);
@@ -41,8 +42,23 @@ public interface BoardService {
 	// 댓글 삭제
 	void comment_delete(Map<String, Object> map);
 
-	// 댓글 수정
-	void comment_modify(Map<String, Object> map);
+	// 일반 게시판 총 개수 구하기
+	int countTotal_normalList();
+
+	// 공지게시판 총 개수
+	int countTotal_noticeList();
+
+	// 자료실 총 개수
+	int countTotal_boardDocuList();
+
+	// 게시판 리스트 불러오기
+	List<BoardVO> board_selectDList(Criteria cri);
+
+	// 댓글 개수 보이기
+	int board_comment_count(int board_num);
+
+
+
 
 
 

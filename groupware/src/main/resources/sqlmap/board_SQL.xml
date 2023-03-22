@@ -26,15 +26,39 @@
 		    #{emp_num}, 
 		    #{board_category_num}, 
 		    #{board_file_name}, 
-		    #{board_file_route});
+		    #{board_file_route}
+		    );
 </insert>
 
 
 
 <!-- ================================================================================================================================ -->
 <!-- 일반게시판 -->
+
+<!-- 검색을 위한 동적 sql -->
+<sql id="search">
+	<if test="searchType == 'board_all'.toString()"> AND (board_title like CONCAT('%',#{keyword},'%'"))
+													OR (E.emp_name like CONCAT('%',#{keyword},'%'))</if>
+	<if test="searchType == 'board_title'.toString()"> AND board_title like CONCAT('%',#{keyword},'%') </if>
+	<if test="searchType == 'emp_name'.toString()"> AND E.emp_name like CONCAT('%',#{keyword},'%')</if>
+</sql>
+
+<!-- 일반 게시판 총 개수구하기 -->
+<select id="countTotal_normalList" resultType="Integer">
+	SELECT
+		count(*),
+		E.emp_name
+	FROM 
+		board B JOIN employee E 
+	ON 
+		B.emp_num = E.emp_num 
+	WHERE 
+		board_category_num = 600
+	<include refid="search"></include>;
+</select>
+
 <!-- 일반 게시판 글 보이기 -->
-<select id="board_normal_selectList" parameterType="com.team3.groupware.eunji.model.BoardVO" resultType="hashMap">
+<select id="board_normal_selectList" parameterType="hashMap" resultType="hashMap">
 	SELECT 
 		B.board_num, 
 		B.board_title, 
@@ -42,7 +66,11 @@
 		E.emp_num, 
 		B.board_write_date, 
 		B.board_view_count, 
-		D.dept_name 
+		D.dept_name,
+		(SELECT count(*) 
+		FROM 
+			board_comment 
+		WHERE board_num = B.board_num) as comment_count
 	FROM 
 		board B JOIN employee E 
 	ON 
@@ -53,11 +81,24 @@
 		D.dept_code = E.dept_code
 	WHERE 
 	 	B.board_category_num = 600
+	<include refid="search"></include>
 	ORDER BY 
-		B.board_num desc;
+		B.board_num desc
+	LIMIT #{pageStart}, #{perPageNum};
 </select>
 
+
 <!-- 공지게시판 -->
+<!-- 공지게시판 개수 구하기 -->
+<select id="countTotal_noticeList" resultType="Integer">
+	SELECT
+		count(*)
+	FROM 
+		board
+	WHERE 
+		board_category_num = 500;
+</select>
+
 <!-- 공지 게시판 글 보이기 -->
 <select id="board_notice_selectList" parameterType="com.team3.groupware.eunji.model.BoardVO" resultType="hashMap">
 	SELECT 
@@ -67,7 +108,11 @@
 		E.emp_num, 
 		B.board_write_date, 
 		B.board_view_count, 
-		D.dept_name 
+		D.dept_name,
+		(SELECT count(*) 
+		FROM 
+			board_comment 
+		WHERE board_num = B.board_num) as comment_count
 	FROM 
 		board B JOIN employee E 
 	ON 
@@ -77,8 +122,10 @@
 		D.dept_code = E.dept_code
 	WHERE 
 		B.board_category_num = 500
+	<include refid="search"></include>
 	ORDER BY 
-		B.board_num desc;
+		B.board_num desc
+	LIMIT #{pageStart}, #{perPageNum};
 </select>
 
 
@@ -139,8 +186,7 @@
 </delete>
 
 <!-- 게시글 검색하기 -->
-<select id="board_search" parameterType="hashMap" 
-resultType="hashMap">
+<select id="board_search" parameterType="hashMap" resultType="hashMap">
 	SELECT 
 		B.board_num, 
 		B.board_title, 
@@ -185,6 +231,46 @@ resultType="hashMap">
 		board_num=#{board_num};
 </update>
 
+<!-- ================================================================================================================================ -->
+<!-- 자로실 -->
+<!-- 자료실 개수 구하기 -->
+<select id="countTotal_boardDocuList" resultType="Integer">
+	SELECT
+		count(*)
+	FROM 
+		board
+	WHERE 
+		board_category_num = 700;
+</select>
+
+<!-- 자료실 리스트 보이기 -->
+<select id="board_selectDList" parameterType="com.team3.groupware.eunji.model.BoardVO" resultType="hashMap">
+	SELECT 
+		B.board_num, 
+		B.board_title, 
+		E.emp_name,
+		E.emp_num, 
+		B.board_write_date, 
+		B.board_view_count, 
+		D.dept_name,
+		(SELECT count(*) 
+		FROM 
+			board_comment 
+		WHERE board_num = B.board_num) as comment_count
+	FROM 
+		board B JOIN employee E 
+	ON 
+		B.emp_num = E.emp_num
+	JOIN department D 
+	ON 
+		D.dept_code = E.dept_code
+	WHERE 
+		B.board_category_num = 700
+	<include refid="search"></include>
+	ORDER BY 
+		B.board_num desc
+	LIMIT #{pageStart}, #{perPageNum};
+</select>
 
 
 <!-- ================================================================================================================================ -->
@@ -232,6 +318,16 @@ resultType="hashMap">
     	comment_num desc; 
 </select>
 
+<!-- 댓글 개수 보이기 -->
+<select id="comment_count" resultType="Integer">
+	SELECT 
+		count(comment_num)
+	FROM 
+		board_comment
+	WHERE 
+		board_num = #{board_num};
+</select>
+
 <!-- 댓글 삭제하기 -->
 <delete id="comment_delete">
 	DELETE FROM 
@@ -240,16 +336,6 @@ resultType="hashMap">
 		comment_num =#{comment_num};
 </delete>
 
-<!-- 댓글 수정하기 -->
-<update id="comment_modify" parameterType="hashMap">
- 	UPDATE 
- 		board_comment
-	SET 
-		comment_date = now(), 
-		comment_contents = #{comment_contents}
-	WHERE 
-		comment_num =#{comment_num};
-</update>
 
 
 

@@ -1,10 +1,10 @@
 /* 
 =============================
-22/08/18 ³ëÇö
-Àü»ç ÁÖ¼Ò·Ï ±âº» css 1Â÷ÀÛ¼º
+22/08/18 ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼Ò·ï¿½ ï¿½âº» css 1ï¿½ï¿½ï¿½Û¼ï¿½
 =============================
 */
-/* Àü»çÁÖ¼Ò·Ï Å¸ÀÌÆ² */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼Ò·ï¿½ Å¸ï¿½ï¿½Æ² */
 *
 {
     /* border: 1px solid royalblue; */
@@ -39,7 +39,7 @@
     padding-top: 23px;
 }
 
-/* ÁÖ¼Ò·Ï °Ë»ö */
+/* ï¿½Ö¼Ò·ï¿½ ï¿½Ë»ï¿½ */
 .address_all_search {
     display: flex;
     justify-content: space-between;
@@ -49,12 +49,12 @@
 	cursor:pointer;
 }
 
-/* EXCEL ³»º¸³»±â */
+/* EXCEL ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 .address_all_excel_sendout {
     margin-left: 40px;
 }
 
-/* ÀÚÀ½º° °Ë»ö */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ */
 .address_all_search_consonant {
     margin-top: 10px;
     margin-left: 40px;
@@ -64,7 +64,7 @@
 	cursor:pointer;
 }
 
-/* a¸µÅ© »ö ¹ØÁÙ Á¦°Å */
+/* aï¿½ï¿½Å© ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
 .address_all_search_consonant > a:link , a:visited , a:hover , a:active{
     text-decoration: none;
     color: black;
@@ -86,13 +86,28 @@
     color: black;
 }
 
-/* ÇÊµå¼³Á¤ */
+/*í˜ì´ì§•*/
+.pagination{
+	display: flex;
+	margin-top: 10px;
+	justify-content: center;
+	list-style-type: none;
+}
+.pagination li{
+	padding: 10px;
+}
+.line{
+	text-decoration-line: none;
+	color: black;
+}
+
+/* ï¿½Êµå¼³ï¿½ï¿½ */
 .address_all_field_set {
     display: flex;
     justify-content: space-between;
 }
 
-/* Å×ÀÌºí */
+/* ï¿½ï¿½ï¿½Ìºï¿½ */
 .address_all_table_title {
     background-color: rgb(13,110,253);
     color: white;
@@ -118,7 +133,7 @@
     padding-left: 15px;
 }
 
-/* ÇÏ´Ü ÆäÀÌÁö ³Ñ¹ö */
+/* ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ */
 .address_all_page_num_box{
     padding-top: 25px;
     padding-bottom: 20px;

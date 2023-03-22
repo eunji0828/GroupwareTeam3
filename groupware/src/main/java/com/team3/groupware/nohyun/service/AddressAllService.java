@@ -18,6 +18,9 @@ public interface AddressAllService {
 	List<AddressAllVO> excelList(AddressAllVO excelDown);
 
 	List<Map<String, Object>> addressInfo(Map<String, Object> AllInfo);
+
+	// 주소록 총 개수 구하기
+	int countTotal_addressAll();
 	
 	
 	

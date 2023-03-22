@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -155,10 +154,10 @@
                    
                    <!-- 최종결재자 의견  -->
                 </div>
-                <div class="worktime_result_write">
+                <!-- <div class="worktime_result_write">
                     <div>결재자 의견</div>
                     <input type="text" id="worktime_result">
-                </div>
+                </div> -->
                	 <div class="worktime_btn">
                     <input type="submit" value="상신" class="worktime_input_btn worktime_approval">
                     <input type="button" value="취소" class="worktime_input_btn worktime_cancel">

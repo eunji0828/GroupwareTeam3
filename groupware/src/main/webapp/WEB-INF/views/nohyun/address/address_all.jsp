@@ -84,18 +84,23 @@
 		</table>
 		
 		<!-- 하단 페이지 넘버  -->
-		<div class="address_all_page_num_box">
-			<div>
-				<div class="address_all_page_num">
-					<span class="address_all_disabled">&lt;&nbsp; 이전</span> <span
-						class="address_all_current">1</span> <a href="#?page=2">2</a> <a
-						href="#?page=3">3</a> <a href="#?page=4">4</a> <a href="#?page=5">5</a>
-					<a href="#?page=6">6</a> <a href="#?page=7">7</a> <a
-						href="#?page=7">8</a> <a href="#?page=7">9</a> <a href="#?page=7">10</a>
-					<span class="address_all_disabled">다음 &nbsp;&gt;</span>
-				</div>
-			</div>
-		</div>
+		<ul class="btn-group pagination">
+			<c:if test="${pageMaker.prev }">
+				<li>
+					<a class="line" href='<c:url value="/address_all?page=${pageMaker.startPage-1}"/>'>prev</a>
+				</li>
+			</c:if>
+			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="pageNum">
+				<li>
+					<a class="line" href='<c:url value="/address_all?page=${pageNum}"/>'>${pageNum}</a>
+				</li>
+			</c:forEach>
+			<c:if test="${pageMaker.next && pageMaker.endPage >0 }">
+				<li>
+					<a class="line" href='<c:url value="/address_all?page=${pageMaker.endPage+1}"/>'>next</a>
+				</li>
+			</c:if>
+		</ul>
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

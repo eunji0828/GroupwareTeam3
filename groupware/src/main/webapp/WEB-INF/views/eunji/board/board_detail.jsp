@@ -88,7 +88,7 @@
                 <div id="board_form_commentinfo">
                 <form action="/board_comment" method="post">
                     <div id="board_comment_count">
-                        <h2><i class="fa-solid fa-comments"></i>댓글</h2>
+                        <h2><i class="fa-solid fa-comments"></i>댓글 [${comment_count}]</h2>
                             <textarea name="comment_contents" id="board_comment_input" placeholder="댓글을 입력해 주세요."></textarea>
                     	<button type="submit" id="board_comment_submit">등록</button>
                     	<input type="hidden" name="emp_num" value="${emp_num}">
@@ -108,12 +108,6 @@
             					<div class="board_comment_btn_box">
             						<form action="/comment_delete" method="post">
             							<i class="xi-close-min comment_delete_btn" title="삭제"></i>
-            							<input type="hidden" name="comment_num" value="${board_comment.comment_num}">
-            							<input type="hidden" name="board_num" value="${detailMap.board_num}">
-            						</form>
-            						
-            						<form action="/comment_modify" method="post">
-            							<i class="xi-border-color comment_modify_btn" title="수정"></i>
             							<input type="hidden" name="comment_num" value="${board_comment.comment_num}">
             							<input type="hidden" name="board_num" value="${detailMap.board_num}">
             						</form>

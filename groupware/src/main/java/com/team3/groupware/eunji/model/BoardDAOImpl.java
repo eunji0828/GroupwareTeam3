@@ -8,6 +8,9 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.team3.groupware.common.model.Criteria;
+
+
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 	
@@ -22,8 +25,8 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 게시글 리스트 불러오기
 	@Override
-	public List<BoardVO> board_selectList(BoardVO boardVo) {
-		return session.selectList("board.board_normal_selectList", boardVo);
+	public List<BoardVO> board_selectList(Criteria cri) {
+		return session.selectList("board.board_normal_selectList", cri);
 		
 	}
 
@@ -61,9 +64,9 @@ public class BoardDAOImpl implements BoardDAO {
 
 	// 공지게시판 리스트 불러오기 -정치-
 	@Override
-	public List<BoardVO> board_selectNTList(BoardVO boardVo) {
+	public List<BoardVO> board_selectNTList(Criteria cri) {
 		// TODO Auto-generated method stub
-		return session.selectList("board.board_notice_selectList", boardVo);
+		return session.selectList("board.board_notice_selectList", cri);
 	}
 
 	// 댓글 입력
@@ -86,12 +89,38 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
-	// 댓글 수정
+	// 일반 게시판 총 개수 구하기
 	@Override
-	public void comment_modify(Map<String, Object> map) {
-		this.session.update("board.comment_modify", map);
-		
+	public int countTotal_normalList() {
+		return (Integer) session.selectOne("countTotal_normalList");
 	}
+
+	// 공지 게시판 개수 구하기
+	@Override
+	public int countTotal_noticeList() {
+		return (Integer) session.selectOne("countTotal_noticeList");
+	}
+
+	// 자료실 게시판 개수 구하기
+	@Override
+	public int countTotal_boardDocuList() {
+		return (Integer) session.selectOne("countTotal_boardDocuList");
+	}
+	
+	// 자료실 리스트 불러오기
+	@Override
+	public List<BoardVO> board_selectDList(Criteria cri) {
+		return session.selectList("board.board_selectDList", cri);
+	}
+
+	// 댓글 개수 보이기
+	@Override
+	public int board_comment_count(int board_num) {
+		return session.selectOne("comment_count", board_num);
+	}
+
+
+
 
 
 

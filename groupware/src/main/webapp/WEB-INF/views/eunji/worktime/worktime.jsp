@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,12 +18,13 @@
 </head>
 
 <body class="sb-nav-fixed">
+
 <!-- 상단/왼쪽 메뉴 include -->
 <%@ include file="/WEB-INF/views/intro.jsp" %>
 
         <div id="layoutSidenav_content">
             <div class="content_box">
-                근태관리홈
+                	근태관리홈
             </div>
 			<!-- 출퇴근 기록  -->
             <div class="worktime_container">
@@ -112,35 +114,33 @@
            </div>
        </div>
 		
-		<!-- 결재 받은 완료 문서  -->
-       <div class="docu_list table_bottom_margin">
-        <p>완료 문서</p>
-        <div class="docu_table_position">
-            <table class="docu_table">
-                <tr class="table_bg">
-                    <td>문서번호</td>
-                    <td>기안일</td>
-                    <td>결재양식</td>
-                    <td>제목</td>
-                    <td>첨부</td>
-                    <td>결재상태</td>
-                </tr>
-                <tr class="docu_table_hover">
-                    <td>302000029</td>
-                    <td>2022-03-08</td>
-                    <td>반차신청서</td>
-                    <td>반차 신청서 결재부탁드립니다~</td>
-                    <td><i class="xi-paper"></i></td>
-                    <td>반려</td>
-                </tr>
-                </tr>
-            </table>
-       </div>
-   </div>
-</div>
+				<!-- 결재 받은 완료 문서  -->
+		       <div class="docu_list table_bottom_margin">
+		        <p>완료 문서</p>
+		        <div class="docu_table_position">
+			            <table class="docu_table">
+			                <tr class="table_bg">
+			                    <td>문서번호</td>
+			                    <td>기안일</td>
+			                    <td>결재양식</td>
+			                    <td>제목</td>
+			                    <td>첨부</td>
+			                    <td>결재상태</td>
+			                </tr>
+			                <tr class="docu_table_hover">
+			                    <td>302000029</td>
+			                    <td>2022-03-08</td>
+			                    <td>반차신청서</td>
+			                    <td>반차 신청서 결재부탁드립니다~</td>
+			                    <td><i class="xi-paper"></i></td>
+			                    <td>반려</td>
+			                </tr>
+			            </table>
+				       </div>
+				   </div>
+				</div>
             </div>
-        </div>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="resources/js/worktime/worktime.js"></script>

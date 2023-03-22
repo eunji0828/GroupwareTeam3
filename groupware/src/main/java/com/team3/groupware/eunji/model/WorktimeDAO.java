@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.team3.groupware.common.model.Criteria;
 import com.team3.groupware.common.model.EmployeeVO;
 
 public interface WorktimeDAO {
@@ -29,7 +30,6 @@ public interface WorktimeDAO {
 
 	// 연차 신청서 입력
 	void vacation_annual_insert(Map<String, Object> map);
-
 	
 
 

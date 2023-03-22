@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+
+import com.team3.groupware.common.model.Criteria;
 import com.team3.groupware.eunji.model.BoardDAO;
 import com.team3.groupware.eunji.model.BoardVO;
 
@@ -24,8 +26,8 @@ public class BoardServiceImpl implements BoardService {
 
 	// 게시글 리스트 불러오기
 	@Override
-	public List<BoardVO> board_selectList(BoardVO boardVo) {
-		return boardDao.board_selectList(boardVo);
+	public List<BoardVO> board_selectList(Criteria cri) {
+		return boardDao.board_selectList(cri);
 		
 	}
 
@@ -83,14 +85,41 @@ public class BoardServiceImpl implements BoardService {
 	
 	// 공지게시글 리스트 불러오기 -정치-
 	@Override
-	public List<BoardVO> board_selectNTList(BoardVO boardVo) {
-		return boardDao.board_selectNTList(boardVo);
+	public List<BoardVO> board_selectNTList(Criteria cri) {
+		return boardDao.board_selectNTList(cri);
 	}
 
-	// 댓글 수정
+	// 일반 게시판 총 개수 구하기
 	@Override
-	public void comment_modify(Map<String, Object> map) {
-		this.boardDao.comment_modify(map);
+	public int countTotal_normalList() {
+		return boardDao.countTotal_normalList();
 	}
+
+	// 공지게시판 개수 구하기
+	@Override
+	public int countTotal_noticeList() {
+		return boardDao.countTotal_noticeList();
+	}
+
+	// 자료실 게시판 개수 구하기
+	@Override
+	public int countTotal_boardDocuList() {
+		return boardDao.countTotal_boardDocuList();
+	}
+
+	// 자료실 리스트 불러오기
+	@Override
+	public List<BoardVO> board_selectDList(Criteria cri) {
+		return boardDao.board_selectDList(cri);
+	}
+
+	// 댓글 개수 보이기
+	@Override
+	public int board_comment_count(int board_num) {
+		return boardDao.board_comment_count(board_num);
+	}
+
+
+
 
 }

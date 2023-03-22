@@ -17,6 +17,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.team3.groupware.common.model.Criteria;
+import com.team3.groupware.common.model.PageMaker;
 import com.team3.groupware.nohyun.model.AddressAllVO;
 import com.team3.groupware.nohyun.service.AddressAllService;
 
@@ -27,12 +29,19 @@ public class AddressAllController {
    AddressAllService addressAllService;
    
    @RequestMapping(value = "address_all")
-   public ModelAndView list(@RequestParam Map<String, Object> map) {
+   public ModelAndView list(@RequestParam Map<String, Object> map, Criteria cri) {
       List<Map<String, Object>> list = this.addressAllService.list(map);
-      ModelAndView mv = new ModelAndView(); //
-      mv.addObject("data", list);
-
-      mv.setViewName("nohyun/address/address_all");
+      ModelAndView mv = new ModelAndView(); 
+      
+   // 페이징
+   PageMaker pageMaker = new PageMaker();
+   pageMaker.setCri(cri);
+   pageMaker.setTotalCount(addressAllService.countTotal_addressAll());
+      
+   mv.addObject("data", list);
+   mv.addObject("pageMaker", pageMaker);
+   
+   mv.setViewName("nohyun/address/address_all");
       return mv;
 
    }

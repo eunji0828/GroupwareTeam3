@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     center: 'title',
                     right: 'listMonth,timeGridDay,timeGridWeek,dayGridMonth'
                 },
-                initialDate: '2022-10-12',
+                initialDate: '2023-02-04',
                 navLinks: true, // can click day/week names to navigate views
                 businessHours: true, // display business hours
                 editable: true,

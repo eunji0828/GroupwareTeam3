@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.team3.groupware.common.model.Criteria;
+import com.team3.groupware.common.model.PageMaker;
 import com.team3.groupware.eunji.model.BoardVO;
 import com.team3.groupware.eunji.service.BoardService;
 
@@ -30,7 +32,7 @@ public class BoardNormalController {
 
 	// 일반 게시판
 	@GetMapping("/board_normal")
-	public ModelAndView boardNoraml(BoardVO boardVo, HttpServletRequest request) {
+	public ModelAndView boardNoraml(BoardVO boardVo, HttpServletRequest request, Criteria cri) throws Exception {
 
 		HttpSession session = request.getSession();
 		ModelAndView mv = new ModelAndView();
@@ -38,8 +40,18 @@ public class BoardNormalController {
 
 		if (session.getAttribute("emp_num") != null) {
 			String change = String.valueOf(session.getAttribute("emp_num"));
-			List<BoardVO> boardNormalList = boardService.board_selectList(boardVo);
+			
+			// 페이징
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(boardService.countTotal_normalList());
+
+		
+			List<BoardVO> boardNormalList = boardService.board_selectList(cri);
 			mv.addObject("boardNormalList", boardNormalList);
+			mv.addObject("pageMaker", pageMaker);
+			
+			
 		}
 		mv.setViewName("/eunji/board/board_normalList");
 		return mv;
@@ -47,7 +59,7 @@ public class BoardNormalController {
 
 	// 게시물 작성
 	@GetMapping("/board_write")
-	public ModelAndView board_write(HttpServletRequest request) {
+	public ModelAndView board_write(HttpServletRequest request) throws Exception {
 
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -69,17 +81,17 @@ public class BoardNormalController {
 	}
 
 	// 게시글 검색
-	@PostMapping("/board_search")
-	public ModelAndView board_search(@RequestBody Map<String, Object> map) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("search", boardService.board_search(map));
-		mv.setViewName("/eunji/board/board_search");
-		return mv;
-	}
+//	@PostMapping("/board_search")
+//	public ModelAndView board_search(@RequestBody Map<String, Object> map) throws Exception {
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("search", boardService.board_search(map));
+//		mv.setViewName("/eunji/board/board_search");
+//		return mv;
+//	}
 
 	// 게시물 작성 DB로 전송
 	@PostMapping("/board_write")
-	public ModelAndView board_new_write(@Valid BoardVO boardVo, @RequestParam MultipartFile file) {
+	public ModelAndView board_new_write(@Valid BoardVO boardVo, @RequestParam MultipartFile file) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
 		// 게시판 첨부파일 insert
@@ -141,7 +153,7 @@ public class BoardNormalController {
 
 	// 게시물 디테일 페이지
 	@GetMapping("/board_detail")
-	public ModelAndView board_view(@RequestParam Map<String, Object> map, BoardVO boardVo) {
+	public ModelAndView board_view(@RequestParam Map<String, Object> map, BoardVO boardVo) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/eunji/board/board_detail");
 		mv.addObject("detailMap", boardService.board_detail(map));
@@ -149,16 +161,19 @@ public class BoardNormalController {
 		// 게시글 조회수 증가
 		int board_num = boardVo.getBoard_num();
 		boardService.board_view_plus(board_num);
+		
+		// 댓글 개수 보이기
+		mv.addObject("comment_count",boardService.board_comment_count(board_num));
 
 		List<Map<String, Object>> board_comment = boardService.board_comment_select(board_num);
 		mv.addObject("board_comment", board_comment);
-
+		System.out.println(boardService.board_comment_count(board_num));
 		return mv;
 	}
 
 	// 게시물 디테일 페이지에서 수정 버튼 클릭 시 데이터 가져오기
 	@GetMapping("/board_modify")
-	public ModelAndView board_modify(@RequestParam Map<String, Object> map) {
+	public ModelAndView board_modify(@RequestParam Map<String, Object> map) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> detailMap = boardService.board_detail(map);
 		mv.addObject("detailMap", detailMap);
@@ -168,7 +183,7 @@ public class BoardNormalController {
 
 	// 게시물 디테일 페이지에서 수정
 	@PostMapping("/board_modify")
-	public ModelAndView board_modify(BoardVO boardVo) {
+	public ModelAndView board_modify(BoardVO boardVo) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		boardService.board_modify(boardVo);
 		int board_num = boardVo.getBoard_num();
@@ -178,7 +193,7 @@ public class BoardNormalController {
 
 	// 게시글 삭제
 	@PostMapping("/board_delete")
-	public ModelAndView board_delete(BoardVO boardVo) {
+	public ModelAndView board_delete(BoardVO boardVo) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int board_num = boardVo.getBoard_num();
 		boardService.board_delete(boardVo);
@@ -188,7 +203,7 @@ public class BoardNormalController {
 
 	// 게시판 댓글 입력
 	@PostMapping("/board_comment")
-	public ModelAndView board_comment(@RequestParam Map<String, Object> map) {
+	public ModelAndView board_comment(@RequestParam Map<String, Object> map) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String cast = (String) map.get("board_num");
 		int board_num = Integer.parseInt(cast);
@@ -207,7 +222,7 @@ public class BoardNormalController {
 
 	// 댓글 삭제
 	@PostMapping("/comment_delete")
-	public ModelAndView comment_delete(@RequestParam Map<String, Object> map) {
+	public ModelAndView comment_delete(@RequestParam Map<String, Object> map) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String cast = (String) map.get("board_num");
 		int board_num = Integer.parseInt(cast);
@@ -217,11 +232,5 @@ public class BoardNormalController {
 		return mv;
 	}
 	
-	// 댓글 수정
-	@PostMapping("/comment_modify")
-	@ResponseBody
-	public void comment_modify(@RequestBody Map<String, Object> map) {
-		boardService.comment_modify(map);
-	}
 
 }

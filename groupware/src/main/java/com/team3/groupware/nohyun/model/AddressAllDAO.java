@@ -42,4 +42,9 @@ public class AddressAllDAO {
 		// TODO Auto-generated method stub
 		return this.sqlSessionTemplate.selectList("address_all.address_all_info",AllInfo);
 	}
+
+	// 주소록 총 개수 구하기
+	public int countTotal_addressAll() {
+		return (Integer) this.sqlSessionTemplate.selectOne("address_all.countTotal_addressAll");
+	}
 }

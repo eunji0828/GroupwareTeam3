@@ -44,7 +44,14 @@ public class BoardVO {
 	private String board_file_route;      // 게시판 첨부파일경로
 	private MultipartFile file;
 	
+	private int comment_count;			  // 댓글 개수
 	
+	public int getComment_count() {
+		return comment_count;
+	}
+	public void setComment_count(int comment_count) {
+		this.comment_count = comment_count;
+	}
 	public int getBoard_num() {
 		return board_num;
 	}

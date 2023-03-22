@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.team3.groupware.common.model.Criteria;
 import com.team3.groupware.common.model.EmployeeVO;
 
 @Repository
@@ -39,7 +40,6 @@ public class WorktimeDAOImpl implements WorktimeDAO {
 	// 부서 정보 보이기
 	@Override
 	public List<EmployeeVO> dept_name_list(Map<String, Object> map ) {
-		// TODO Auto-generated method stub
 		return session.selectList("worktime.worktime_dept_info", map);
 	}
 
