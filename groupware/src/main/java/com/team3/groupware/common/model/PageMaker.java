@@ -2,6 +2,7 @@ package com.team3.groupware.common.model;
 
 public class PageMaker {
 	
+	// 캡슐화.. 
 	private Criteria cri;
 	private int totalCount;			// 총 게시글 수
 	private int startPage;			// 시작 페이지 번호
