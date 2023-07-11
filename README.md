@@ -6,7 +6,7 @@
 - 프로젝트 맡은 역할 : 전자결재, 근태관리, todo - front-end /
                       todo, 일반게시판, 페이징 - back-end /
                       Git 관리, UI, ERD 설계<br>
-- 사용언어
+- 사용언어<br>
   java 1.8<br>
   Spring(maven)<br>
   MySQL
